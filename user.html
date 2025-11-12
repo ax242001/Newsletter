@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Sign-up</title>
+    <style>
+        /* --- Container and General Styling --- */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        .newsletter-container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h4 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* --- Form Styling --- */
+        #newsletterForm {
+            display: flex;
+            gap: 10px; /* Space between input and button */
+        }
+        input[type="email"] {
+            flex-grow: 1; /* Makes the input take up most of the space */
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .btn-subscribe {
+            background-color: #28a745; /* Green color for subscribe */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-subscribe:hover {
+            background-color: #218838;
+        }
+
+        /* --- Results Area Styling --- */
+        #submissionResult {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-left: 5px solid #28a745;
+            border-radius: 4px;
+            background-color: #e6ffed;
+            color: #155724;
+            display: none; /* Initially hidden */
+            font-size: 15px;
+            word-break: break-all; /* Ensures long emails don't overflow */
+        }
+        #submissionResult strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="newsletter-container">
+    <h4>Join Our Newsletter</h4>
+    <p style="text-align: center; font-size: 14px; margin-bottom: 25px;">Stay up-to-date with our latest news and offers!</p>
+
+    <form id="newsletterForm">
+        <input type="email" id="emailInput" name="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn-subscribe">Subscribe</button>
+    </form>
+    
+    <div id="submissionResult">
+        </div>
+</div>
+
+<script>
+    // Get the form element
+    const form = document.getElementById('newsletterForm');
+    // Get the results display area
+    const resultDiv = document.getElementById('submissionResult');
+    // Get the email input field
+    const emailInput = document.getElementById('emailInput');
+
+    // Add an event listener for form submission
+    form.addEventListener('submit', function(event) {
+        // 1. Prevent the default form submission (stops page reload)
+        event.preventDefault();
+
+        // 2. Get the value of the email input
+        const submittedEmail = emailInput.value;
+        
+        // 3. Update the results div content and make it visible
+        resultDiv.innerHTML = `Thank you for subscribing! We've captured the email: <strong>${submittedEmail}</strong>`;
+        resultDiv.style.display = 'block';
+
+        // 4. Optionally, clear the input field after successful submission
+        // emailInput.value = ''; 
+    });
+</script>
+
+</body>
+</html>
